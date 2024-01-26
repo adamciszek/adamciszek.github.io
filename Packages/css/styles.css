@@ -406,6 +406,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
   display: inline-flex;
   align-items: center;
   transition: 0.3s;
+  max-width: fit-content;
 }
 
 .button--small {
