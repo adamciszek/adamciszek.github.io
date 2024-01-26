@@ -894,6 +894,7 @@ textarea::placeholder {
   font-family: "Poppins", sans-serif;
   border: none;
   cursor: pointer;
+  text-align: center;
   background-image: linear-gradient(
     to top right,
     rgba(5, 71, 253, 0.589),
