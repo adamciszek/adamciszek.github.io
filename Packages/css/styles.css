@@ -886,7 +886,7 @@ textarea::placeholder {
 
 /* validity pseudo classes */
 .contact__input:invalid {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #000000;
 }
 
 /* linearGradient */
