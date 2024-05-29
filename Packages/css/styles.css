@@ -464,7 +464,7 @@ img[alt~="CodingMan"] {
 
 /* child combinators */
 div.about__info-data > span {
-  background-color: var(--first-color-lighter);
+  background-color: rgba(107, 113, 113, 0.35);
   border-radius: 4px;
   width: 90px;
   padding: 3px;
