@@ -6,7 +6,7 @@
 /* Structural selector 01 */
 :root {
   /* We can change our favorite color */
-  --hue-color: 210;
+  --hue-color: ;
   /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
   /* HSL color mode */
@@ -296,7 +296,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
   position: absolute;
   top: 0;
   left: 0;
-  fill: var(--first-color-lighter);
+  fill: #6b7171;
   width: 35vw;
   z-index: -1;
   animation: move 10s ease-in-out infinite;
@@ -661,7 +661,7 @@ div.about__info-data > span {
   display: inline-block;
   width: 13px;
   height: 13px;
-  background-color: var(--first-color);
+  background-color: #000000;
   border-radius: 50%;
 }
 
@@ -670,7 +670,7 @@ div.about__info-data > span {
   display: block;
   width: 1px;
   height: 100%;
-  background-color: var(--first-color);
+  background-color: #000000;
   transform: translate(6px, -7px);
 }
 
