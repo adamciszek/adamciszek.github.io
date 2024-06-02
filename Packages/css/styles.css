@@ -454,7 +454,7 @@ img[alt~="CodingMan"] {
 
 .about__info-title {
   font-size: var(--h2-font-size);
-  font-weight: var(--font-semi-bold);
+  font-weight: normal;
   color: var(--title-color);
 }
 
@@ -739,8 +739,8 @@ img[alt~="site"] {
 /*linear Gradients */
 .blog__bg {
   background-image: linear-gradient(
-    rgba(5, 71, 253, 0.705),
-    rgba(130, 205, 248, 0.705)
+          rgba(5, 71, 253, 0.705),
+          rgba(130, 205, 248, 0.705)
   );
   padding: 3rem 2rem 2rem;
   border-radius: 1rem;
@@ -880,7 +880,7 @@ input::placeholder {
 }
 
 textarea::placeholder {
-  color: var(--first-color-alt);
+  color: black;
   font-size: var(--smaller-font-size);
 }
 
@@ -896,17 +896,17 @@ textarea::placeholder {
   cursor: pointer;
   text-align: center;
   background-image: linear-gradient(
-    to top right,
-    rgba(5, 71, 253, 0.589),
-    rgba(161, 221, 255, 0.705)
+          to top right,
+          rgba(5, 71, 253, 0.589),
+          rgba(161, 221, 255, 0.705)
   );
 }
 
 .contact__button:hover {
   background-image: linear-gradient(
-    to top left,
-    rgba(139, 218, 255, 0.589),
-    rgba(53, 84, 255, 0.705)
+          to top left,
+          rgba(139, 218, 255, 0.589),
+          rgba(53, 84, 255, 0.705)
   );
 }
 
@@ -921,7 +921,7 @@ textarea::placeholder {
 }
 
 .footer__bg {
-  background-color: var(--first-color-alt);
+  background-color: black;
   padding: 2rem 0 3rem;
 }
 
@@ -944,13 +944,13 @@ textarea::placeholder {
   50% {
     color: #ffe6ff;
     text-shadow: 0 0 0.6rem #abfdfd, 0 0 1.5rem #16f8ed,
-      -0.2rem 0.1rem 1rem #00aeff, 0.2rem 0.1rem 1rem #00189e;
+    -0.2rem 0.1rem 1rem #00aeff, 0.2rem 0.1rem 1rem #00189e;
   }
   100% {
     color: #ffe6ff;
     text-shadow: 0 0 0.6rem #abfdfd, 0 0 1.5rem #16f8ed,
-      -0.2rem 0.1rem 1rem #00aeff, 0.2rem 0.1rem 1rem #00189e,
-      0 -0.5rem 2rem #0a0094, 0 0.5rem 3rem #000424;
+    -0.2rem 0.1rem 1rem #00aeff, 0.2rem 0.1rem 1rem #00189e,
+    0 -0.5rem 2rem #0a0094, 0 0.5rem 3rem #000424;
   }
 }
 
@@ -972,7 +972,7 @@ textarea::placeholder {
 }
 
 .footer__link:hover {
-  color: black;
+  color: gray;
 }
 
 .footer__social {
@@ -981,7 +981,7 @@ textarea::placeholder {
 }
 
 .footer__social:hover {
-  color: black;
+  color: gray;
 }
 
 .footer__copy {
@@ -1413,5 +1413,22 @@ div.footer__container + p {
   }
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.resume-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.resume-iframe {
+  width: 100%;
+  height: 850px; /* You can adjust this height as needed */
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .resume-iframe {
+    height: auto;
   }
 }
