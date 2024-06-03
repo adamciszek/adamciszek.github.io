@@ -395,30 +395,41 @@
     <!--==================== CONTACT ME ====================-->
     <section class="contact section" id="contact">
       <h2 class="section__title">Contact Me</h2>
-
       <div class="contact__container container grid">
         <div>
-
           <div class="contact__information">
             <i class="uil uil-envelope contact__icon"></i>
-
             <div>
               <h3 class="contact__title">E-mail</h3>
               <span class="contact__subtitle">contact@adamciszek.ca</span>
             </div>
           </div>
-
           <div class="contact__information">
             <i class="uil uil-map-marker contact__icon"></i>
-
             <div>
               <h3 class="contact__title">Location</h3>
               <span class="contact__subtitle">Toronto, Canada</span>
             </div>
           </div>
         </div>
+        <div class="contact__form">
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="bdbbc04b-9a60-4d71-90de-838bd764c270">
+            <div class="contact__content">
+              <label for="name" class="contact__label">Name</label>
+              <input type="text" id="name" name="name" class="contact__input" placeholder="Enter your name" required />
+            </div>
+            <div class="contact__content">
+              <label for="message" class="contact__label">Message</label>
+              <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="contact__button">Send</button>
+          </form>
+        </div>
       </div>
     </section>
+
+
 </main>
 
 <!--==================== FOOTER ====================-->
