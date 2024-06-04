@@ -994,7 +994,7 @@ textarea::placeholder {
 .footer__copy {
   font-size: var(--smaller-font-size);
   text-align: center;
-  color: var(--text-color);
+  color: white;
   margin-top: 48px;
 }
 
@@ -1016,7 +1016,7 @@ li :not(a.nav__link) {
 
 /*Relational selector - Adjacent sibling selector */
 div.footer__container + p {
-  color: black;
+  color: white;
 }
 
 /*========== SCROLL UP ==========*/
