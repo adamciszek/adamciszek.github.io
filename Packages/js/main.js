@@ -1,3 +1,17 @@
+/*==================== LOADER ====================*/
+window.addEventListener('load', function() {
+  const loaderWrapper = document.querySelector('.loader-wrapper');
+  const mainContent = document.querySelector('.main');
+  const header = document.querySelector('.header');
+  const footer = document.querySelector('.footer');
+
+  setTimeout(() => {
+    loaderWrapper.style.display = 'none';
+    mainContent.style.display = 'block';
+    header.style.display = 'block';
+    footer.style.display = 'block';
+  }, 3000); // 3000 milliseconds = 3 seconds
+});
 /*==================== NAV-MENU ====================*/
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
