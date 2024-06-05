@@ -14,8 +14,8 @@ window.addEventListener('load', function() {
 });
 /*==================== NAV-MENU ====================*/
 const navMenu = document.getElementById("nav-menu"),
-  navToggle = document.getElementById("nav-toggle"),
-  navClose = document.getElementById("nav-close");
+    navToggle = document.getElementById("nav-toggle"),
+    navClose = document.getElementById("nav-close");
 
 /*===== MENU SHOWN =====*/
 if (navToggle) {
@@ -33,7 +33,7 @@ if (navClose) {
 
 /*==================== ACCORDION SKILLS ====================*/
 const skillsContent = document.getElementsByClassName("skills__content"),
-  skillsHeader = document.querySelectorAll(".skills__header");
+    skillsHeader = document.querySelectorAll(".skills__header");
 
 function toggleSkills() {
   let itemClass = this.parentNode.className;
@@ -52,7 +52,7 @@ skillsHeader.forEach((el) => {
 
 /*==================== QUALIFICATION TABS ====================*/
 const tabs = document.querySelectorAll("[data-target]"),
-  tabContents = document.querySelectorAll("[data-content]");
+    tabContents = document.querySelectorAll("[data-content]");
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {

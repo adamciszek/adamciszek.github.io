@@ -1444,19 +1444,10 @@ div.footer__container + p {
     width: 70%;
   }
 
-.wrapper {
-  cursor: url("Packages/images/cursor.png"), auto;
-}
-
-
-  body, html {
-    height: 100%;
-    text-align: center;
+  .wrapper {
+    cursor: url("Packages/images/cursor.png"), auto;
   }
 
-  body {
-    background-color: #242F3F;
-  }
 
   .loader-wrapper{
     width: 100%;
