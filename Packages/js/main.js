@@ -12,6 +12,24 @@ window.addEventListener('load', function() {
     footer.style.display = 'block';
   }, 3000); // 3000 milliseconds = 3 seconds
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  cursor.classList.add("cursor");
+  document.body.appendChild(cursor);
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+
+  document.querySelectorAll("a, button, .expand-cursor").forEach((element) => {
+    element.addEventListener("mouseenter", () => cursor.classList.add("expand"));
+    element.addEventListener("mouseleave", () => cursor.classList.remove("expand"));
+  });
+});
+
+
 /*==================== NAV-MENU ====================*/
 const navMenu = document.getElementById("nav-menu"),
     navToggle = document.getElementById("nav-toggle"),
