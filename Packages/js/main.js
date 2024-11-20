@@ -12,6 +12,7 @@ window.addEventListener('load', function() {
     footer.style.display = 'block';
   }, 3000); // 3000 milliseconds = 3 seconds
 });
+
 /*==================== NAV-MENU ====================*/
 const navMenu = document.getElementById("nav-menu"),
     navToggle = document.getElementById("nav-toggle"),
