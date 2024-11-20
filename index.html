@@ -416,21 +416,35 @@
           </div>
         </div>
         <div class="contact__form">
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="bdbbc04b-9a60-4d71-90de-838bd764c270">
+          <!-- Updated form with StaticForms API -->
+          <form action="https://formsubmit.co/ciszek.adam914@gmail.com" method="POST" />
+
+            <!-- Name input field -->
             <div class="contact__content">
               <label for="name" class="contact__label">Name</label>
-              <input type="text" id="name" name="name" class="contact__input" placeholder="Enter your name" required />
+              <input type="text" id="name" name="name" class="contact__input" placeholder="Enter your name" />
             </div>
+
+            <!-- Email input field -->
+            <div class="contact__content">
+              <label for="email" class="contact__label">Email</label>
+              <input type="email" id="email" name="email" class="contact__input" placeholder="Enter your email" />
+            </div>
+
+            <!-- Message textarea field -->
             <div class="contact__content">
               <label for="message" class="contact__label">Message</label>
-              <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message" required></textarea>
+              <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message"></textarea>
             </div>
+
+            <!-- Submit button -->
             <button type="submit" class="contact__button">Send</button>
           </form>
         </div>
       </div>
     </section>
+
+
 
 
 </main>
