@@ -13,6 +13,27 @@ window.addEventListener('load', function() {
   }, 3000); // 3000 milliseconds = 3 seconds
 });
 
+/*==================== CONTACT FORM LOADING ====================*/
+const form = document.getElementById("contact-form");
+const button = document.getElementById("send-button");
+
+if (form && button) {
+  form.addEventListener("submit", (e) => {
+    // Change cursor to 'wait' and disable button
+    document.body.style.cursor = "wait";
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    // Revert cursor back after submission (optional if redirection occurs)
+    form.addEventListener("submit", () => {
+      document.body.style.cursor = "default";
+      button.disabled = false;
+      button.textContent = "Send";
+    });
+  });
+}
+
+
 /*==================== NAV-MENU ====================*/
 const navMenu = document.getElementById("nav-menu"),
     navToggle = document.getElementById("nav-toggle"),
