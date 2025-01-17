@@ -104,7 +104,6 @@
 
         <div class="home__data">
           <h1 class="home__title">Hi, I'm Adam Ciszek</h1>
-          <h3 class="home__subtitle">Software Developer</h3>
           <p class="home__description">
             Computing Graduate from Queen's University
           </p>
@@ -495,8 +494,7 @@
         </div>
         <div class="contact__form">
           <!-- Updated form with StaticForms API -->
-          <form action="https://formsubmit.co/4d8f006afb2d825058ce281d12be5cab" method="POST" />
-
+          <form id="contact-form" action="https://formsubmit.co/4d8f006afb2d825058ce281d12be5cab" method="POST">
             <!-- Name input field -->
             <div class="contact__content">
               <label for="name" class="contact__label">Name</label>
@@ -516,12 +514,11 @@
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="contact__button">Send</button>
+            <button id="send-button" type="submit" class="contact__button">Send</button>
           </form>
         </div>
       </div>
     </section>
-
 
 
 
