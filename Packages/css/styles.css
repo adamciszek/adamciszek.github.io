@@ -131,6 +131,7 @@ img {
   bottom: 0;
   left: 0;
   z-index: 100;
+  background-color: rgba(255,255,255,0.8);
 }
 
 /*====================== NAV ====================*/
@@ -146,6 +147,7 @@ img {
 nav #nav__logo {
   color: var(--title-color);
   font-weight: 500;
+  cursor: pointer;
 }
 
 #nav__logo:hover {
@@ -191,6 +193,7 @@ nav #nav__logo {
   font-size: var(--small-font-size);
   color: var(--title-color);
   font-weight: 500;
+  cursor: pointer;
 }
 
 /* child combinator */
@@ -270,6 +273,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
   row-gap: 1rem;
 }
 
+
 /* Text effects - writing mode */
 .vertical-text {
   display: none;
@@ -285,6 +289,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
 
 .home__social-icon:hover {
   color: var(--first-color-lighter);
+  cursor: pointer;
 }
 
 /* Borders*/
@@ -553,60 +558,29 @@ div.about__info-data > span {
   background-color: #000000;
 }
 
-.skills__html {
+.skills__60 {
   width: 60%;
 }
 
-.skills__css {
+.skills__50 {
   width: 50%;
 }
 
-.skills__js {
+.skills__40 {
   width: 40%;
 }
 
-.skills__mongodb{
+.skills__70{
   width: 70%;
 }
 
-.skills__wordpress {
-  width: 70%;
-}
 
-.skills__python {
-  width: 60%;
-}
-
-.skills__tab {
-  width: 70%;
-}
-
-.skills__sql {
-  width: 70%;
-}
-
-.skills__google {
-  width: 70%;
-}
-
-.skills__office{
+.skills__80{
   width: 80%;
 }
 
-.skills__java {
-  width: 80%;
-}
-
-.skills__react {
-  width: 70%;
-}
-
-.skills__py {
-  width: 80%;
-}
-
-.skills__flutter {
-  width: 50%;
+.skills__90 {
+  width: 90%;
 }
 
 .skills__close .skills__list {
@@ -697,54 +671,83 @@ div.about__info-data > span {
   color: var(--first-color);
 }
 
-/*=================================== PROJECTS ====================================*/
+/* Projects Section */
+.projects {
+  padding: 4rem 0;
+}
+
+/* Scroll Container */
 .projects__container {
-  gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-/* Rounded corners  */
-.projects__content {
+  overflow-x: auto; /* Enable horizontal scrolling */
   display: flex;
-  flex-direction: column;
+  gap: 2rem; /* Space between cards */
+  max-width: 1200px;
+}
+
+/* Scroll Container for Projects */
+.projects__scroll {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 2rem; /* Prevents the last card from getting cut off */
+}
+
+/* Each Project Card */
+.project__card {
   background-color: #fff;
-  justify-content: center;
-  border-radius: 0.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  transition: 0.3s;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Attribute selector 02 */
-img[alt~="site"] {
-  border-radius: 5px;
-  margin-bottom: 8px;
-}
-
-.projects__content:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: scale(1.025);
+.project__card:hover {
+  transform: translateY(-5px); /* Hover effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-/* semi-transparent */
-.projects__content:hover .pro-img {
-  opacity: 0.8;
+/* Project Image */
+.project__img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
-
-.projects__title {
-  font-size: var(--h3-font-size);
-  margin-bottom: 16px;
-  font-weight: 500;
-}
-
-.projects__button {
+.project__img:hover{
   cursor: pointer;
-  font-size: var(--small-font-size);
 }
 
-.projects__button:hover .button__icon {
-  transform: translateX(0.25rem);
+/* Project Title */
+.project__title {
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-weight: 600;
+  color: #333;
 }
+
+/* Project Description */
+.project__description {
+  padding: 0 1rem 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Optional: Add smooth scrolling for user experience */
+.projects__container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects__container::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.projects__container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
 
 /*===================================== Blog Posts ============================*/
 /*linear Gradients */
@@ -1077,6 +1080,7 @@ div.footer__container + p {
 
   .nav__menu {
     padding: 2rem 0.25rem 2rem;
+    cursor: pointer;
   }
 
   .nav__list {
@@ -1117,15 +1121,6 @@ div.footer__container + p {
 
   .qualification__data {
     gap: 0.5rem;
-  }
-
-  .projects__container {
-    grid-template-columns: max-content;
-    justify-content: center;
-  }
-
-  .projects__content {
-    padding: 1rem;
   }
 
   .pro-img {
@@ -1186,9 +1181,6 @@ div.footer__container + p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .projects__content {
-    padding: 1rem;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -1299,24 +1291,12 @@ div.footer__container + p {
     grid-template-columns: 0.5fr;
   }
 
-  .projects__container {
-    grid-template-columns: repeat(3, 30vw);
-    justify-content: center;
-  }
 
-  .projects__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
   .pro-img {
     width: 25vw;
   }
 
-  .projects__content {
-    padding: 1rem;
-  }
 
   .blog__container {
     grid-template-columns: repeat(3, 1fr);
@@ -1402,17 +1382,9 @@ div.footer__container + p {
     transform: translateX(-6rem);
   }
 
-  .projects__container {
-    grid-template-columns: repeat(3, 27vw);
-    justify-content: center;
-  }
 
   .pro-img {
     width: 25vw;
-  }
-
-  .projects__content {
-    padding: 1rem;
   }
 
   .contact__form {
