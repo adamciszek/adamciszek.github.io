@@ -502,6 +502,10 @@ div.about__info-data > span {
   cursor: pointer;
 }
 
+.skills__group {
+  border: 1px solid black;
+}
+
 .skills__icon,
 .skills__arrow {
   font-size: 2rem;
@@ -721,7 +725,7 @@ div.about__info-data > span {
 
 /* Project Title */
 .project__title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 1rem;
   font-weight: 600;
   color: #333;
@@ -730,7 +734,7 @@ div.about__info-data > span {
 /* Project Description */
 .project__description {
   padding: 0 1rem 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #666;
 }
 
