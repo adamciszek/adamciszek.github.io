@@ -1,7 +1,6 @@
 
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
 /*====================CSS VARIABLES ====================*/
 
 /* Structural selector 01 */
@@ -59,7 +58,7 @@ html {
 
 body {
   margin: 0 0 48px 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serifserif;
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
@@ -93,8 +92,7 @@ img {
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
-  padding: 2rem 0 4rem;
-  margin-bottom: 40px;
+  padding: 4rem 0 4rem;
 }
 
 .section__title {
@@ -146,7 +144,7 @@ img {
 /* Specificity */
 nav #nav__logo {
   color: var(--title-color);
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
 }
 
@@ -182,6 +180,8 @@ nav #nav__logo {
 }
 
 .nav__list {
+  display: flex;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
@@ -200,6 +200,17 @@ nav #nav__logo {
 ul.nav__list > li.nav__item .nav__link:hover {
   color: var(--first-color);
 }
+.nav__item:last-child .nav__link {
+  background-color: gray;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white; /* Ensure the text is readable on a gray background */
+}
+
+.nav__item:last-child .nav__link:hover {
+  background-color: darkgray; /* Change background on hover for a nice effect */
+}
+
 
 .nav__icon {
   font-size: 1.2rem;
@@ -241,6 +252,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
 /*===================================== MAIN ===============================*/
 .home__container {
   gap: 1rem;
+  margin-bottom: 5rem;
 }
 
 .Quote {
@@ -289,8 +301,12 @@ ul.nav__list > li.nav__item .nav__link:hover {
 
 .home__social-icon:hover {
   color: var(--first-color-lighter);
+}
+aside.home__social .home__social-icon:hover,
+aside.home__social .home__social-icon i:hover {
   cursor: pointer;
 }
+
 
 /* Borders*/
 .home__Profile-pic {
@@ -367,6 +383,7 @@ ul.nav__list > li.nav__item .nav__link:hover {
 
 .home__scroll-mouse {
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .home__scroll-name {
@@ -374,10 +391,12 @@ ul.nav__list > li.nav__item .nav__link:hover {
   color: var(--title-color);
   font-weight: 500;
   margin-right: 4px;
+  cursor: pointer;
 }
 
 .home__scroll-arrow {
   font-size: 1.25rem;
+  cursor: pointer;
 }
 
 /*==================== BUTTONS ====================*/
@@ -498,7 +517,7 @@ div.about__info-data > span {
 .skills__header {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   cursor: pointer;
 }
 
@@ -677,7 +696,7 @@ div.about__info-data > span {
 
 /* Projects Section */
 .projects {
-  padding: 4rem 0;
+  padding: 4rem 0 2rem;
 }
 
 /* Scroll Container */
@@ -857,23 +876,27 @@ div.about__info-data > span {
   padding: 0.75rem 1rem 0.25rem;
 }
 
+/* Label Styling */
 .contact__label {
   font-size: var(--normal-font-size);
   color: black;
 }
 
+/* General Input Styling */
 .contact__input {
   width: 100%;
   background-color: var(--input-color);
   color: var(--text-color);
   font-family: "Poppins", sans-serif;
   font-size: var(--small-font-size);
-  border: none;
+  border: 2px solid var(--first-color-alt); /* Visible border by default */
   outline: none;
   padding: 0.25rem 0.5rem 0.5rem 0;
+  border-radius: 0.5rem; /* Rounded borders for inputs */
+  transition: all 0.3s ease; /* Smooth transition */
 }
 
-/* Attribute selector 03 */
+/* Specific styling for text and email input */
 input[type="text"],
 input[type="email"] {
   width: 100%;
@@ -881,17 +904,23 @@ input[type="email"] {
   color: var(--text-color);
   font-family: "Poppins", sans-serif;
   font-size: var(--small-font-size);
-  border: none;
+  border: 2px solid var(--first-color-alt); /* Visible border by default */
   outline: none;
   padding: 0.25rem 0.5rem 0.5rem 0;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-/* user-action pesudo selector */
-.contact__input:focus {
-  border-bottom: 2px solid var(--first-color-alt);
+/* Focused input styling */
+.contact__input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: var(--first-color); /* Focus border color */
+  background-color: var(--input-focus-bg, #f0f0f0); /* Optional background color change */
+  box-shadow: 0 0 5px var(--first-color); /* Optional subtle shadow effect */
 }
 
-/* Pesudo element generated content */
+/* Placeholder text styling */
 input::placeholder {
   color: var(--first-color-alt);
   font-size: var(--smaller-font-size);
@@ -902,7 +931,7 @@ textarea::placeholder {
   font-size: var(--smaller-font-size);
 }
 
-/* validity pseudo classes */
+/* Invalid input state */
 .contact__input:invalid {
   border-bottom: 2px solid #000000;
 }
@@ -987,6 +1016,7 @@ textarea::placeholder {
 
 .footer__link:hover {
   color: gray;
+  cursor: pointer;
 }
 
 .footer__social {
@@ -997,6 +1027,11 @@ textarea::placeholder {
 .footer__social:hover {
   color: gray;
 }
+.footer__social:hover,
+.footer__social i:hover {
+  cursor: pointer;
+}
+
 
 .footer__copy {
   font-size: var(--smaller-font-size);
@@ -1103,6 +1138,7 @@ div.footer__container + p {
     width: 24px;
   }
 
+
   .home__subtitle {
     font-size: 24px;
   }
@@ -1207,7 +1243,7 @@ div.footer__container + p {
     margin: 0;
   }
   .section {
-    padding: 6rem 0 2rem;
+    padding: 4rem 0 2rem;
   }
   .section__subtitle {
     margin-bottom: 4rem;
