@@ -154,36 +154,55 @@ nav #nav__logo {
 
 .nav__toggle {
   font-size: 1.1rem;
-  cursor: url("Packages/images/cursor.png"), auto;
+  cursor: pointer;
   color: var(--title-color);
   font-weight: 500;
 }
 
-/* user action pseudo class */
 .nav__toggle:hover {
   color: var(--first-color);
 }
 
 @media screen and (max-width: 767px) {
-  /* box-shadow */
   .nav__menu {
     position: fixed;
     bottom: -100%;
     left: 0;
     width: 100%;
-    background-color: var(--body-color);
-    padding: 2rem 1.5rem 4rem;
+    background-color: white;
+    padding: 3rem 1.5rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
     transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem; /* Increased gap for better spacing */
+  }
+
+  .nav__link {
+    padding: 0.75rem 1rem; /* Adds more clickable space */
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: 500;
+    cursor: pointer;
   }
 }
+
 
 .nav__list {
   display: flex;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Ensure spacing remains consistent */
 }
 
 .nav__link {
@@ -196,21 +215,22 @@ nav #nav__logo {
   cursor: pointer;
 }
 
-/* child combinator */
 ul.nav__list > li.nav__item .nav__link:hover {
   color: var(--first-color);
+  text-decoration: underline; /* Adds an underline effect */
+
 }
+
 .nav__item:last-child .nav__link {
   background-color: gray;
   border-radius: 5px;
   padding: 0.5rem;
-  color: white; /* Ensure the text is readable on a gray background */
+  color: white;
 }
 
 .nav__item:last-child .nav__link:hover {
-  background-color: darkgray; /* Change background on hover for a nice effect */
+  background-color: darkgray;
 }
-
 
 .nav__icon {
   font-size: 1.2rem;
@@ -219,9 +239,9 @@ ul.nav__list > li.nav__item .nav__link:hover {
 .nav__close {
   position: absolute;
   right: 1.3rem;
-  bottom: 0.5rem;
+  top: 1rem;
   font-size: 1.5rem;
-  cursor: url("Packages/images/cursor.png"), auto;
+  cursor: pointer;
   color: var(--first-color);
 }
 
@@ -229,25 +249,11 @@ ul.nav__list > li.nav__item .nav__link:hover {
   color: var(--first-color-alt);
 }
 
-/* show menu */
+/* Show menu */
 .show-menu {
   bottom: 0;
 }
 
-/* Active link */
-.active-link {
-  color: var(--first-color);
-}
-
-.nav__link:target {
-  color: var(--first-color);
-}
-
-/* Change background header */
-/* box-shadow */
-.scroll-header {
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
-}
 
 /*===================================== MAIN ===============================*/
 .home__container {
@@ -621,6 +627,10 @@ div.about__info-data > span {
   transform: rotate(-180deg);
 }
 
+.skills__arrow:hover{
+  cursor: pointer;
+}
+
 /*================================ QUALIFICATION ============================*/
 .qualification__tabs {
   display: flex;
@@ -632,10 +642,19 @@ div.about__info-data > span {
   font-size: var(--h3-font-size);
   font-weight: 500;
   cursor: pointer;
+  padding: 10px 15px; /* Add padding for better spacing */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
 }
 
 .qualification__button:hover {
   color: var(--first-color);
+  background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+.qualification__button.qualification__active {
+  color: var(--first-color); /* Keep the active tab text color */
+  background-color: #f0f0f0; /* Add a light grey background for active tab */
 }
 
 .qualification__icon {
@@ -692,6 +711,7 @@ div.about__info-data > span {
 
 .qualification__button.qualification__active {
   color: var(--first-color);
+  background-color: #f0f0f0; /* Ensure background stays active */
 }
 
 /* Projects Section */
