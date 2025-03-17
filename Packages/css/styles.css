@@ -1,6 +1,7 @@
 
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 /*====================CSS VARIABLES ====================*/
 
 /* Structural selector 01 */
@@ -133,6 +134,27 @@ img {
 }
 
 /*====================== NAV ====================*/
+/* Define the custom font */
+@font-face {
+  font-family: 'Primera Signature';
+  src: url('/Packages/fonts/PrimeraSignature.ttf') format('truetype'); /* Adjust the path if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font to your name in the header */
+#nav__logo {
+  font-family: 'Primera Signature', cursive; /* Fallback to cursive if the font fails to load */
+  font-size: 3rem; /* Adjust the size as needed */
+  font-weight: 100; /* Adjust the weight as needed */
+  color: var(--title-color); /* Ensure the color matches your design */
+  cursor: pointer;
+}
+
+#nav__logo:hover {
+  color: var(--first-color); /* Hover color */
+}
+
 .nav {
   max-width: 968px;
   height: 3rem;
@@ -143,13 +165,7 @@ img {
 
 /* Specificity */
 nav #nav__logo {
-  color: var(--title-color);
-  font-weight: 800;
-  cursor: pointer;
-}
-
-#nav__logo:hover {
-  color: var(--first-color);
+  font-weight: 800; /* Ensure the font weight is consistent */
 }
 
 .nav__toggle {
@@ -197,7 +213,6 @@ nav #nav__logo {
   }
 }
 
-
 .nav__list {
   display: flex;
   align-items: center;
@@ -218,7 +233,6 @@ nav #nav__logo {
 ul.nav__list > li.nav__item .nav__link:hover {
   color: var(--first-color);
   text-decoration: underline; /* Adds an underline effect */
-
 }
 
 .nav__item:last-child .nav__link {
@@ -253,7 +267,6 @@ ul.nav__list > li.nav__item .nav__link:hover {
 .show-menu {
   bottom: 0;
 }
-
 
 /*===================================== MAIN ===============================*/
 .home__container {
@@ -630,7 +643,26 @@ div.about__info-data > span {
 .skills__arrow:hover{
   cursor: pointer;
 }
+/*==================== ABOUT IMAGES ====================*/
+.about-images__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem; /* Adjust the gap between images as needed */
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
 
+.about-images__img {
+  width: 200px; /* Adjust the size of the images as needed */
+  height: auto;
+  opacity: 1; /* Adjust transparency */
+  transition: transform 0.6s ease;
+}
+
+.about-images__img:hover {
+  transform: scale(1.1);
+}
 /*================================ QUALIFICATION ============================*/
 .qualification__tabs {
   display: flex;
