@@ -663,6 +663,20 @@ div.about__info-data > span {
 .about-images__img:hover {
   transform: scale(1.1);
 }
+
+/* Media query for smaller screens (e.g., tablets and mobile devices) */
+@media (max-width: 768px) {
+  .about-images__container {
+    flex-direction: column; /* Stack images vertically */
+    gap: 5rem; /* Reduce the gap between stacked images */
+    width: 90%; /* Make the container 80% of the screen width */
+    margin: 0 auto; /* Center the container */
+  }
+
+  .about-images__img {
+    width: 175px; /* Adjust image size for smaller screens if needed */
+  }
+}
 /*================================ QUALIFICATION ============================*/
 .qualification__tabs {
   display: flex;
