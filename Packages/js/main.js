@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
     mainContent.style.display = 'block';
     header.style.display = 'block';
     footer.style.display = 'block';
-  }, 3000); // 3000 milliseconds = 3 seconds
+  }, 1500); // 3000 milliseconds = 3 seconds
 });
 
 /*==================== CONTACT FORM LOADING ====================*/
@@ -109,3 +109,24 @@ function scrollUp() {
   else scrollUp.classList.remove("show-scroll");
 }
 window.addEventListener("scroll", scrollUp);
+
+/*==================== CUSTOM CURSOR ====================*/
+const cursor = document.querySelector(".cursor");
+const cursor2 = document.querySelector(".cursor2");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.pageX + "px";
+  cursor.style.top = e.pageY + "px";
+  cursor2.style.left = e.pageX + "px";
+  cursor2.style.top = e.pageY + "px";
+});
+
+document.addEventListener("click", () => {
+  cursor.classList.add("click");
+  cursor2.classList.add("click");
+
+  setTimeout(() => {
+    cursor.classList.remove("click");
+    cursor2.classList.remove("click");
+  }, 500);
+});
