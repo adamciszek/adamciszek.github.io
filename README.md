@@ -1,2 +1,2 @@
-# adamciszek.github.io
-Portfolio Website
+# Welcome
+Visit my portfolio website @ www.adamciszek.ca
