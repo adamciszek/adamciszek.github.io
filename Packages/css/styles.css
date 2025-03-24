@@ -1060,7 +1060,7 @@ input[type="email"] {
 input[type="text"]:focus,
 input[type="email"]:focus {
   border-color: var(--first-color); /* Focus border color */
-  background-color: var(--input-focus-bg, #f0f0f0); /* Optional background color change */
+  background-color: var(#f0f0f0); /* Optional background color change */
   box-shadow: 0 0 5px var(--first-color); /* Optional subtle shadow effect */
 }
 
