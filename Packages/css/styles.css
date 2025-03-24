@@ -532,6 +532,53 @@ div.about__info-data > span {
   justify-content: center;
 }
 
+/* ==================== CONTACT FORM LOADING STATES ==================== */
+.contact__button {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__button .loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.contact__button .button-text {
+  transition: opacity 0.3s;
+}
+
+.contact__button.sending .button-text {
+  opacity: 0;
+}
+
+.contact__button.sending .loading-spinner {
+  opacity: 1;
+}
+
+.contact__button.sent::after {
+  content: '\2713'; /* Checkmark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  color: white;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 /*==================== SKILLS ====================*/
 .skills__container {
   display: grid;

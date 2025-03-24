@@ -155,35 +155,49 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      // UI Feedback
+      // Add sending class
+      sendButton.classList.add("sending");
       sendButton.disabled = true;
-      sendButton.textContent = "Sending...";
       document.body.style.cursor = "wait";
 
       emailjs.sendForm('service_tv33ph3', 'template_w64uc4s', form)
           .then(() => {
-            // Success
-            sendButton.innerHTML = '<i class="uil uil-check-circle"></i> Sent!';
+            // Success - show checkmark
+            sendButton.classList.remove("sending");
+            sendButton.classList.add("sent");
+
             analytics.logEvent('contact_form_submit_success');
+
+            // Reset form
             form.reset();
-          })
-          .catch((error) => {
-            // Error
-            sendButton.innerHTML = '<i class="uil uil-exclamation-circle"></i> Error';
-            analytics.logEvent('contact_form_submit_error', { error: error.toString() });
-            console.error('Failed to send:', error);
-          })
-          .finally(() => {
-            // Reset UI
+
+            // Return to normal state after 2 seconds
             setTimeout(() => {
-              sendButton.textContent = "Send";
+              sendButton.classList.remove("sent");
               sendButton.disabled = false;
               document.body.style.cursor = "default";
             }, 2000);
+          })
+          .catch((error) => {
+            // Error - reset button
+            sendButton.classList.remove("sending");
+            sendButton.disabled = false;
+            document.body.style.cursor = "default";
+
+            // Show error temporarily
+            const originalText = sendButton.querySelector('.button-text').textContent;
+            sendButton.querySelector('.button-text').textContent = 'Error!';
+
+            analytics.logEvent('contact_form_submit_error', { error: error.toString() });
+            console.error('Failed to send:', error);
+
+            // Return to original text after 2 seconds
+            setTimeout(() => {
+              sendButton.querySelector('.button-text').textContent = originalText;
+            }, 1000);
           });
     });
   }
-
   /*==================== PROJECT CLICK TRACKING ====================*/
   document.querySelectorAll('.project__card').forEach(card => {
     card.addEventListener('click', () => {
