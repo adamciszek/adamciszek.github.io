@@ -11,5 +11,8 @@
     <orderEntry type="library" name="line" level="application" />
     <orderEntry type="library" name="firebase-app-compat" level="application" />
     <orderEntry type="library" name="firebase-analytics-compat" level="application" />
+    <orderEntry type="library" name="@emailjs/browser" level="application" />
+    <orderEntry type="library" name="firebase-app" level="application" />
+    <orderEntry type="library" name="firebase-analytics" level="application" />
   </component>
 </module>

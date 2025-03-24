@@ -14,15 +14,23 @@
 
   <!--==================== CSS ====================-->
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 </head>
 <body>
-<div class="loader-wrapper">
-  <span class="loader"><span class="loader-inner"></span></span>
-</div>
 <!--==================== HEADER ====================-->
 <header class="header" id="header">
   <nav class="nav container">
-    <a href="#" id="nav__logo">Adam Ciszek</a>
+    <a href="#" id="nav__logo">
+      <img src="images/favicon.ico" alt="Logo" class="nav__logo-img">
+    </a>
+
     <div class="nav__menu" id="nav-menu">
       <ul class="nav__list grid">
         <li class="nav__item">
@@ -579,53 +587,52 @@
       </div>
     </section>
 
-    <!--==================== CONTACT ME ====================-->
-    <section class="contact section" id="contact">
-      <h2 class="section__title">Contact Me</h2>
-      <div class="contact__container container grid">
-        <div>
-          <div class="contact__information">
-            <i class="uil uil-envelope contact__icon"></i>
-            <div>
-              <h3 class="contact__title">E-mail</h3>
-              <span class="contact__subtitle">contact@adamciszek.ca</span>
-            </div>
-          </div>
-          <div class="contact__information">
-            <i class="uil uil-map-marker contact__icon"></i>
-            <div>
-              <h3 class="contact__title">Location</h3>
-              <span class="contact__subtitle">Toronto, Canada</span>
-            </div>
+  <!--==================== CONTACT ME ====================-->
+  <section class="contact section" id="contact">
+    <h2 class="section__title">Contact Me</h2>
+    <div class="contact__container container grid">
+      <div>
+        <div class="contact__information">
+          <i class="uil uil-envelope contact__icon"></i>
+          <div>
+            <h3 class="contact__title">E-mail</h3>
+            <span class="contact__subtitle">contact@adamciszek.ca</span>
           </div>
         </div>
-        <div class="contact__form">
-          <!-- Updated form with StaticForms API -->
-          <form id="contact-form" action="https://formsubmit.co/ciszek.adam914@gmail.com" method="POST">
-            <!-- Name input field -->
-            <div class="contact__content">
-              <label for="name" class="contact__label">Name</label>
-              <input type="text" id="name" name="name" class="contact__input" placeholder="Enter your name" />
-            </div>
-
-            <!-- Email input field -->
-            <div class="contact__content">
-              <label for="email" class="contact__label">Email</label>
-              <input type="email" id="email" name="email" class="contact__input" placeholder="Enter your email" />
-            </div>
-
-            <!-- Message textarea field -->
-            <div class="contact__content">
-              <label for="message" class="contact__label">Message</label>
-              <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message"></textarea>
-            </div>
-
-            <!-- Submit button -->
-            <button id="send-button" type="submit" class="contact__button">Send</button>
-          </form>
+        <div class="contact__information">
+          <i class="uil uil-map-marker contact__icon"></i>
+          <div>
+            <h3 class="contact__title">Location</h3>
+            <span class="contact__subtitle">Toronto, Canada</span>
+          </div>
         </div>
       </div>
-    </section>
+      <div class="contact__form">
+        <form id="contact-form">
+          <!-- Name input field -->
+          <div class="contact__content">
+            <label for="name" class="contact__label">Name</label>
+            <input type="text" id="name" name="from_name" class="contact__input" placeholder="Enter your name" required>
+          </div>
+
+          <!-- Email input field -->
+          <div class="contact__content">
+            <label for="email" class="contact__label">Email</label>
+            <input type="email" id="email" name="from_email" class="contact__input" placeholder="Enter your email" required>
+          </div>
+
+          <!-- Message textarea field -->
+          <div class="contact__content">
+            <label for="message" class="contact__label">Message</label>
+            <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message" required></textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button id="send-button" type="submit" class="contact__button">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -670,7 +677,7 @@
       </div>
     </div>
     <p class="footer__copy">
-      &#169; Ciszek, 2024 All rights reserved.
+      &#169; Ciszek, 2024 All rights reserved. v1.1
     </p>
   </div>
 </footer>
@@ -682,36 +689,5 @@
 <!--==================== MAIN JS ====================-->
 <script src="js/main.js"></script>
 
-<!--custom cursor-->
-<div class="cursor"></div>
-<div class="cursor2"></div>
-
-<!-- Firebase Analytics -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAU9tiOkoyo6sdIwZQZRKDQ1pyxNiVem-o",
-    authDomain: "adamciszek-647d0.firebaseapp.com",
-    projectId: "adamciszek-647d0",
-    storageBucket: "adamciszek-647d0.appspot.com",
-    messagingSenderId: "397670153154",
-    appId: "1:397670153154:web:6ec5dc65a6e854a3c5745b",
-    measurementId: "G-32QT72H0E6"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-  // Track initial page view
-  import { logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-  logEvent(analytics, 'page_view', {
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname
-  });
-</script>
 </body>
 </html>
