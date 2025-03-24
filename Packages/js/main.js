@@ -135,3 +135,21 @@ document.addEventListener("click", () => {
     cursor2.classList.remove("click");
   }, 500);
 });
+
+
+//Analytics stuff
+// Example: Track button clicks
+document.querySelector('.contact__button').addEventListener('click', () => {
+  import { logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+  logEvent(analytics, 'contact_form_submit');
+});
+
+// Example: Track project clicks
+document.querySelectorAll('.project__card').forEach(card => {
+  card.addEventListener('click', () => {
+    import { logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+    logEvent(analytics, 'project_click', {
+      project_title: card.querySelector('.project__title').textContent
+    });
+  });
+});

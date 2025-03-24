@@ -135,7 +135,7 @@ img {
 /* Define the custom font */
 @font-face {
   font-family: 'Primera Signature';
-  src: url('/Packages/fonts/PrimeraSignature.ttf') format('truetype'); /* Adjust the path if needed */
+  src: url('Packages/fonts/PrimeraSignature.ttf') format('truetype'); /* Adjust the path if needed */
   font-weight: normal;
   font-style: normal;
 }

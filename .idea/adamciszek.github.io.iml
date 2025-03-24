@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="line" level="application" />
+    <orderEntry type="library" name="firebase-app-compat" level="application" />
+    <orderEntry type="library" name="firebase-analytics-compat" level="application" />
   </component>
 </module>
