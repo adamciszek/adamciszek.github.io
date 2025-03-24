@@ -54,23 +54,28 @@ if (navClose) {
 }
 
 /*==================== ACCORDION SKILLS ====================*/
-const skillsContent = document.getElementsByClassName("skills__content"),
-    skillsHeader = document.querySelectorAll(".skills__header");
+const skillsContents = document.querySelectorAll(".skills__content");
 
-function toggleSkills() {
-  let itemClass = this.parentNode.className;
+skillsContents.forEach(content => {
+  const header = content.querySelector('.skills__header');
 
-  for (i = 0; i < skillsContent.length; i++) {
-    skillsContent[i].className = "skills__content skills__close";
-  }
-  if (itemClass === "skills__content skills__close") {
-    this.parentNode.className = "skills__content skills__open";
+  content.addEventListener('click', function(e) {
+    if (e.target === content || e.target.closest('.skills__header')) {
+      toggleSkills(content);
+    }
+  });
+});
+
+function toggleSkills(content) {
+  // Toggle current item only (multiple can be open)
+  if (content.classList.contains('skills__close')) {
+    content.classList.remove('skills__close');
+    content.classList.add('skills__open');
+  } else {
+    content.classList.remove('skills__open');
+    content.classList.add('skills__close');
   }
 }
-
-skillsHeader.forEach((el) => {
-  el.addEventListener("click", toggleSkills);
-});
 
 /*==================== QUALIFICATION TABS ====================*/
 const tabs = document.querySelectorAll("[data-target]"),
