@@ -146,56 +146,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /*==================== CONTACT FORM ====================*/
   const form = document.getElementById("contact-form");
-  const sendButton = document.getElementById("send-button");
+  const sendButton = form ? form.querySelector("button[type='submit']") : null;
 
   if (form && sendButton) {
     // Initialize EmailJS
     emailjs.init('8zZiGKytUjcIiqBXn');
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      e.stopPropagation(); // Add this to prevent any parent form handlers
 
-      // Add sending class
+      // Set sending state
       sendButton.classList.add("sending");
       sendButton.disabled = true;
-      document.body.style.cursor = "wait";
 
-      emailjs.sendForm('service_tv33ph3', 'template_w64uc4s', form)
-          .then(() => {
-            // Success - show checkmark
-            sendButton.classList.remove("sending");
-            sendButton.classList.add("sent");
+      try {
+        await emailjs.sendForm(
+            'service_tv33ph3',
+            'template_w64uc4s',
+            form
+        );
 
-            analytics.logEvent('contact_form_submit_success');
+        // Success state
+        sendButton.classList.remove("sending");
+        sendButton.classList.add("sent");
 
-            // Reset form
-            form.reset();
+        // Track success
+        analytics.logEvent('contact_form_submit_success');
 
-            // Return to normal state after 2 seconds
-            setTimeout(() => {
-              sendButton.classList.remove("sent");
-              sendButton.disabled = false;
-              document.body.style.cursor = "default";
-            }, 2000);
-          })
-          .catch((error) => {
-            // Error - reset button
-            sendButton.classList.remove("sending");
-            sendButton.disabled = false;
-            document.body.style.cursor = "default";
+        // Reset form
+        form.reset();
 
-            // Show error temporarily
-            const originalText = sendButton.querySelector('.button-text').textContent;
-            sendButton.querySelector('.button-text').textContent = 'Error!';
+        // Keep checkmark visible for 3 seconds
+        await new Promise(resolve => setTimeout(resolve, 3000));
 
-            analytics.logEvent('contact_form_submit_error', { error: error.toString() });
-            console.error('Failed to send:', error);
+        // Return to normal state
+        sendButton.classList.remove("sent");
+        sendButton.disabled = false;
 
-            // Return to original text after 2 seconds
-            setTimeout(() => {
-              sendButton.querySelector('.button-text').textContent = originalText;
-            }, 1000);
-          });
+      } catch (error) {
+        console.error('Failed to send:', error);
+
+        // Error state
+        sendButton.classList.remove("sending", "sent");
+        sendButton.disabled = false;
+
+        // Show error temporarily
+        const buttonText = sendButton.querySelector('.button-text');
+        const originalText = buttonText.textContent;
+        buttonText.textContent = 'Error - Try Again';
+
+        // Track error
+        analytics.logEvent('contact_form_submit_error', {
+          error: error.message
+        });
+
+        // Reset after 3 seconds
+        setTimeout(() => {
+          buttonText.textContent = originalText;
+        }, 3000);
+      }
     });
   }
   /*==================== PROJECT CLICK TRACKING ====================*/

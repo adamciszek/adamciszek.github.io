@@ -532,53 +532,6 @@ div.about__info-data > span {
   justify-content: center;
 }
 
-/* ==================== CONTACT FORM LOADING STATES ==================== */
-.contact__button {
-  position: relative;
-  overflow: hidden;
-}
-
-.contact__button .loading-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.contact__button .button-text {
-  transition: opacity 0.3s;
-}
-
-.contact__button.sending .button-text {
-  opacity: 0;
-}
-
-.contact__button.sending .loading-spinner {
-  opacity: 1;
-}
-
-.contact__button.sent::after {
-  content: '\2713'; /* Checkmark */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.2rem;
-  color: white;
-}
-
-@keyframes spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
 /*==================== SKILLS ====================*/
 .skills__container {
   display: grid;
@@ -1041,114 +994,261 @@ div.about__info-data > span {
   text-shadow: 2px 2px rgba(73, 73, 73, 0.25);
 }
 
-/*================================== CONTACT ME ================================*/
+/* ==================== CONTACT FORM ==================== */
 .contact__container {
-  row-gap: 3rem;
+  display: grid;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.contact__information {
-  display: flex;
-  margin-bottom: 32px;
+.contact__form-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contact__form-group {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.contact__input {
+  width: 100%;
+  padding: 1rem 0;
+  font-size: var(--normal-font-size);
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.contact__input:focus {
+  border-bottom-color: #000;
+}
+
+.contact__label {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  color: var(--text-color-light);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: var(--normal-font-size);
+}
+
+.contact__input:focus + .contact__label,
+.contact__input:not(:placeholder-shown) + .contact__label {
+  top: -1rem;
+  font-size: 0.85rem;
+  color: #000;
+}
+
+.contact__line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.4s ease;
+}
+
+.contact__input:focus ~ .contact__line {
+  width: 100%;
+}
+
+.contact__form-area textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+/* ==================== CONTACT BUTTON ==================== */
+.contact__button {
+  position: relative;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  padding: 1.1rem 3rem;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: var(--normal-font-size);
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 220px;
+  margin-top: 1rem;
+}
+
+.contact__button:hover {
+  background-color: #222;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Loader */
+.button__loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 2;
+}
+
+.button__loader-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  box-sizing: border-box;
+  margin: 0; /* Remove any default margins */
+}
+
+/* Button Checkmark */
+.button__checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button__checkmark svg {
+  fill: white;
+}
+
+/* Button Text */
+.button-text {
+  transition: all 0.4s ease;
+}
+
+/* Button States */
+.contact__button.sending .button-text {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.contact__button.sending .button__loader {
+  opacity: 1;
+}
+
+.contact__button.sent .button__loader {
+  opacity: 0;
+}
+
+.contact__button.sent .button__checkmark {
+  opacity: 1;
+}
+
+.contact__button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg);
+  }
+}
+
+/* ==================== CONTACT INFO CARDS ==================== */
+.contact__info {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact__card {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .contact__icon {
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   color: var(--first-color);
-  margin-right: 12px;
+  margin-bottom: 1.25rem;
 }
 
-.content__title {
+.contact__title {
   font-size: var(--h3-font-size);
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
 }
 
 .contact__subtitle {
   font-size: var(--small-font-size);
-  color: var(--text-color-light);
-}
-
-.contact__content {
-  background-color: var(--input-color);
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem 0.25rem;
-}
-
-/* Label Styling */
-.contact__label {
-  font-size: var(--normal-font-size);
-  color: black;
-}
-
-/* General Input Styling */
-.contact__input {
-  width: 100%;
-  background-color: var(--input-color);
   color: var(--text-color);
-  font-family: "Poppins", sans-serif;
-  font-size: var(--small-font-size);
-  border: 2px solid var(--first-color-alt); /* Visible border by default */
-  outline: none;
-  padding: 0.25rem 0.5rem 0.5rem 0;
-  border-radius: 0.5rem; /* Rounded borders for inputs */
-  transition: all 0.3s ease; /* Smooth transition */
 }
 
-/* Specific styling for text and email input */
-input[type="text"],
-input[type="email"] {
-  width: 100%;
-  background-color: var(--input-color);
-  color: var(--text-color);
-  font-family: "Poppins", sans-serif;
-  font-size: var(--small-font-size);
-  border: 2px solid var(--first-color-alt); /* Visible border by default */
-  outline: none;
-  padding: 0.25rem 0.5rem 0.5rem 0;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .contact__container {
+    grid-template-columns: 1fr 1.5fr;
+    align-items: start;
+  }
+
+  .contact__info {
+    grid-template-columns: 1fr;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .contact__button {
+    margin-left: auto;
+  }
 }
 
-/* Focused input styling */
-.contact__input:focus,
-input[type="text"]:focus,
-input[type="email"]:focus {
-  border-color: var(--first-color); /* Focus border color */
-  background-color: var(#f0f0f0); /* Optional background color change */
-  box-shadow: 0 0 5px var(--first-color); /* Optional subtle shadow effect */
+/* Ensure loader and checkmark are properly positioned */
+.button__loader,
+.button__checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Placeholder text styling */
-input::placeholder {
-  color: var(--first-color-alt);
-  font-size: var(--smaller-font-size);
+/* Make sure button text has transition */
+.button-text {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
 }
 
-textarea::placeholder {
-  color: black;
-  font-size: var(--smaller-font-size);
+/* Button states */
+.contact__button.sending .button-text {
+  opacity: 0;
+  transform: translateX(-15px);
 }
 
-/* Invalid input state */
-.contact__input:invalid {
-  border-bottom: 2px solid #000000;
-}
-
-.contact__button {
-  align-self: flex-end;
-  padding: 0.75rem 2rem;
-  background-color: #000; /* Black background */
-  color: #fff;
-  font-size: var(--normal-font-size);
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.contact__button:hover {
-  background-color: #808080; /* Gray background on hover */
-  transform: translateY(-0.1rem);
+.contact__button.sent .button-text {
+  opacity: 0;
 }
 
 /*==================================== FOOTER ==================================*/

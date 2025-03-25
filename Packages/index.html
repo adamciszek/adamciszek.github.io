@@ -590,47 +590,51 @@
   <!--==================== CONTACT ME ====================-->
   <section class="contact section" id="contact">
     <h2 class="section__title">Contact Me</h2>
-    <div class="contact__container container grid">
-      <div>
-        <div class="contact__information">
+    <span class="section__subtitle">Let's work together</span>
+
+    <div class="contact__container container">
+      <div class="contact__info">
+        <div class="contact__card">
           <i class="uil uil-envelope contact__icon"></i>
-          <div>
-            <h3 class="contact__title">E-mail</h3>
-            <span class="contact__subtitle">contact@adamciszek.ca</span>
-          </div>
+          <h3 class="contact__title">Email</h3>
+          <span class="contact__subtitle">contact@adamciszek.ca</span>
         </div>
-        <div class="contact__information">
+
+        <div class="contact__card">
           <i class="uil uil-map-marker contact__icon"></i>
-          <div>
-            <h3 class="contact__title">Location</h3>
-            <span class="contact__subtitle">Toronto, Canada</span>
-          </div>
+          <h3 class="contact__title">Location</h3>
+          <span class="contact__subtitle">Toronto, Canada</span>
         </div>
       </div>
-      <div class="contact__form">
-        <form id="contact-form">
-          <!-- Name input field -->
-          <div class="contact__content">
-            <label for="name" class="contact__label">Name</label>
-            <input type="text" id="name" name="from_name" class="contact__input" placeholder="Enter your name" required>
+
+      <div class="contact__form-container">
+        <form id="contact-form" class="contact__form">
+          <div class="contact__form-group">
+            <input type="text" name="from_name" class="contact__input" placeholder=" " required>
+            <label class="contact__label">Full Name</label>
+            <div class="contact__line"></div>
           </div>
 
-          <!-- Email input field -->
-          <div class="contact__content">
-            <label for="email" class="contact__label">Email</label>
-            <input type="email" id="email" name="from_email" class="contact__input" placeholder="Enter your email" required>
+          <div class="contact__form-group">
+            <input type="email" name="from_email" class="contact__input" placeholder=" " required>
+            <label class="contact__label">Email Address</label>
+            <div class="contact__line"></div>
           </div>
 
-          <!-- Message textarea field -->
-          <div class="contact__content">
-            <label for="message" class="contact__label">Message</label>
-            <textarea id="message" name="message" class="contact__input" rows="5" placeholder="Enter your message" required></textarea>
+          <div class="contact__form-group contact__form-area">
+            <textarea name="message" class="contact__input" placeholder=" " required rows="5"></textarea>
+            <label class="contact__label">Your Message</label>
+            <div class="contact__line"></div>
           </div>
 
-          <!-- Submit button -->
-          <button id="send-button" type="submit" class="contact__button">
-            <span class="button-text">Send</span>
-            <span class="loading-spinner"></span>
+          <button type="submit" id="send-button" class="contact__button button--flex">
+            <span class="button-text">Send Message</span>
+            <span class="button__loader">
+            <span class="button__loader-spinner"></span>
+            </span>
+            <svg class="button__checkmark" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
           </button>
         </form>
       </div>
