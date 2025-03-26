@@ -516,7 +516,7 @@ img[alt~="CodingMan"] {
 div.about__info-data > span {
   background-color: rgba(107, 113, 113, 0.35);
   border-radius: 4px;
-  width: 90px;
+  width: 100px;
   padding: 3px;
   margin: 2px;
 }
@@ -996,11 +996,22 @@ div.about__info-data > span {
 
 /* ==================== CONTACT FORM ==================== */
 .contact__container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 3rem;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 3rem;
+}
+
+.contact__info-container {
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .contact__form-container {
@@ -1008,6 +1019,8 @@ div.about__info-data > span {
   padding: 2.5rem;
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
 }
 
 .contact__form-group {
@@ -1067,6 +1080,37 @@ div.about__info-data > span {
   min-height: 150px;
 }
 
+/* ==================== CLICKABLE CONTACT CARD ==================== */
+.contact__card-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--title-color); /* Use your existing color variable */
+  height: 100%;
+  width: 100%;
+}
+
+/* Specific styles for the email card */
+.email-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.email-card:hover {
+  background-color: hsl(var(--hue-color), 92%, 95%); /* Use your --first-color-lighter or similar */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Make sure the link doesn't show any text decoration */
+.contact__card-link:hover,
+.contact__card-link:focus,
+.contact__card-link:active {
+  color: var(--title-color);
+  text-decoration: none;
+}
+
 /* ==================== CONTACT BUTTON ==================== */
 .contact__button {
   position: relative;
@@ -1117,7 +1161,7 @@ div.about__info-data > span {
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   box-sizing: border-box;
-  margin: 0; /* Remove any default margins */
+  margin: 0;
 }
 
 /* Button Checkmark */
@@ -1166,16 +1210,10 @@ div.about__info-data > span {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* ==================== CONTACT INFO CARDS ==================== */
-.contact__info {
-  display: grid;
-  gap: 1.5rem;
-}
-
 .contact__card {
   background: white;
   padding: 1.75rem;
@@ -1184,6 +1222,7 @@ div.about__info-data > span {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 250px;
 }
 
 .contact__card:hover {
@@ -1209,20 +1248,35 @@ div.about__info-data > span {
 }
 
 /* Responsive Layout */
-@media (min-width: 768px) {
-  .contact__container {
-    grid-template-columns: 1fr 1.5fr;
-    align-items: start;
+@media (max-width: 768px) {
+  .contact__info-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
 
-  .contact__info {
-    grid-template-columns: 1fr;
-    position: sticky;
-    top: 2rem;
+  .contact__card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .contact__form-container {
+    padding: 1.5rem;
   }
 
   .contact__button {
     margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact__container {
+    padding: 1rem;
+  }
+
+  .contact__form-container {
+    padding: 1rem;
   }
 }
 
@@ -1250,7 +1304,6 @@ div.about__info-data > span {
 .contact__button.sent .button-text {
   opacity: 0;
 }
-
 /*==================================== FOOTER ==================================*/
 .footer {
   padding-top: 2rem;

@@ -208,6 +208,24 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  /*==================== CLICK EFFECT TO EMAIL CARD ====================*/
+  const emailCard = document.querySelector('.email-card');
+  emailCard.addEventListener('click', function() {
+    // This will work even without JS, but adds a nice click effect
+    this.style.transform = 'translateY(0)';
+    window.location.href = "mailto:contact@adamciszek.ca?subject=Let's%20Work%20Together";
+  });
+
+// Enhanced hover effects
+  emailCard.addEventListener('mouseenter', () => {
+    emailCard.style.transform = 'translateY(-7px)';
+    emailCard.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.15)';
+  });
+  emailCard.addEventListener('mouseleave', () => {
+    emailCard.style.transform = 'translateY(-5px)';
+    emailCard.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+  });
   /*==================== PROJECT CLICK TRACKING ====================*/
   document.querySelectorAll('.project__card').forEach(card => {
     card.addEventListener('click', () => {
