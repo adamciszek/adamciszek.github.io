@@ -474,32 +474,74 @@ aside.home__social .home__social-icon i:hover {
 }
 
 /*========================================= ABOUT ===================================*/
-/* Attribute selector 01 */
-img[alt~="CodingMan"] {
-  width: 200px;
-  border-radius: 0.5rem;
-  justify-self: center;
+.about__container {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
   align-items: center;
+  min-height: 650px;
+}
+
+.about__images {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.about__image-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.about__image {
+  width: 200px;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: grayscale(15%);
+}
+
+.about__image:hover {
+  transform: scale(1.08);
+  filter: grayscale(0%);
+}
+
+.about__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about__description {
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
+  text-align: left;
+  line-height: 1.6;
 }
 
-/* Pseudo elements */
+/* First letter styling */
 .about__container p:first-of-type::first-letter {
-  position: relative;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1;
   color: var(--first-color);
   font-weight: bold;
+  margin-right: 0.2rem;
 }
 
+/* Restored original info boxes styling */
 .about__info {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+
+.about__info-data {
+  text-align: center;
 }
 
 .about__info-title {
@@ -512,26 +554,86 @@ img[alt~="CodingMan"] {
   font-size: var(--smaller-font-size);
 }
 
-/* child combinators */
+
 div.about__info-data > span {
-  background-color: rgba(107, 113, 113, 0.35);
+  background-color: rgba(141, 148, 148, 0.35);
   border-radius: 4px;
   width: 100px;
   padding: 3px;
   margin: 2px;
+  display: inline-block;
 }
 
 .about__info-title,
 .about__info-name {
   display: block;
-  text-align: center;
 }
 
 .about__buttons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
+/* Responsive Adjustments */
+@media screen and (min-width: 1200px) {
+  .about__image {
+    width: 220px; /* Even larger on big screens */
+    max-height: 200px;
+  }
+}
+
+/* Mobile/Tablet Layout - Images above text */
+@media screen and (max-width: 992px) {
+  .about__container {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 2rem;
+  }
+
+  .about__images {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+    margin-bottom: 2rem;
+    order: -1; /* This moves images above the text */
+    height: auto;
+  }
+
+  .about__image-item {
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .about__image {
+    width: 160px;
+    max-height: 140px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about__images {
+    gap: 1.5rem;
+  }
+
+  .about__image {
+    width: 140px;
+    max-height: 120px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about__images {
+    gap: 1rem;
+  }
+
+  .about__image {
+    width: 120px;
+    max-height: 100px;
+  }
+}
 /*==================== SKILLS ====================*/
 .skills__container {
   display: grid;
@@ -728,40 +830,6 @@ div.about__info-data > span {
   }
 }
 
-/*==================== ABOUT IMAGES ====================*/
-.about-images__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10rem; /* Adjust the gap between images as needed */
-  margin-top: 1px;
-  margin-bottom: 1px;
-}
-
-.about-images__img {
-  width: 200px; /* Adjust the size of the images as needed */
-  height: auto;
-  opacity: 1; /* Adjust transparency */
-  transition: transform 0.6s ease;
-}
-
-.about-images__img:hover {
-  transform: scale(1.1);
-}
-
-/* Media query for smaller screens (e.g., tablets and mobile devices) */
-@media (max-width: 768px) {
-  .about-images__container {
-    flex-direction: column; /* Stack images vertically */
-    gap: 5rem; /* Reduce the gap between stacked images */
-    width: 90%; /* Make the container 80% of the screen width */
-    margin: 0 auto; /* Center the container */
-  }
-
-  .about-images__img {
-    width: 175px; /* Adjust image size for smaller screens if needed */
-  }
-}
 /*================================ QUALIFICATION ============================*/
 .qualification__tabs {
   display: flex;
@@ -1648,26 +1716,6 @@ div.footer__container + p {
 
   .home__scroll-button {
     margin-left: 48px;
-  }
-
-  .about__container {
-    column-gap: 5rem;
-  }
-
-  .about__img {
-    width: 350px;
-  }
-
-  .about__description {
-    text-align: initial;
-  }
-
-  .about__info {
-    justify-content: space-between;
-  }
-
-  .about__buttons {
-    justify-content: initial;
   }
 
   .qualification__tabs {
