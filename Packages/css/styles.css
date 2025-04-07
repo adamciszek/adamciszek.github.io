@@ -229,14 +229,14 @@ nav #nav__logo {
   flex-direction: column;
   align-items: center;
   font-size: var(--small-font-size);
-  color: var(--title-color);
+  color: #3f3f3f;
   font-weight: 500;
   cursor: pointer;
 }
 
 ul.nav__list > li.nav__item .nav__link:hover {
-  color: var(--first-color);
-  text-decoration: underline; /* Adds an underline effect */
+  color: black;
+  font-weight: bolder;
 }
 
 .nav__item:last-child .nav__link {

@@ -56,24 +56,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function toggleSkills(content) {
-    const wasClosed = content.classList.contains('skills__close');
-
-    // Close all first
-    skillsContents.forEach(item => {
-      item.classList.remove('skills__open');
-      item.classList.add('skills__close');
-    });
-
-    // Open clicked one if it was closed
-    if (wasClosed) {
+    // Toggle the clicked content only
+    if (content.classList.contains('skills__close')) {
       content.classList.remove('skills__close');
       content.classList.add('skills__open');
       analytics.logEvent('skills_section_open', {
         section: content.querySelector('.skills__title').textContent.trim()
       });
+    } else {
+      content.classList.remove('skills__open');
+      content.classList.add('skills__close');
     }
   }
-
   /*==================== QUALIFICATION TABS ====================*/
   const tabs = document.querySelectorAll("[data-target]"),
       tabContents = document.querySelectorAll("[data-content]");
