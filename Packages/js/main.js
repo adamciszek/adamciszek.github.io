@@ -24,23 +24,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   /*==================== NAVIGATION MENU ====================*/
-  const navMenu = document.getElementById("nav-menu"),
-      navToggle = document.getElementById("nav-toggle"),
-      navClose = document.getElementById("nav-close");
+  // Scroll-activated nav highlighting
+  const sections = document.querySelectorAll('section[id]');
 
-  if (navToggle) {
-    navToggle.addEventListener("click", () => {
-      navMenu.classList.add("show-menu");
-      analytics.logEvent('menu_open');
-    });
-  }
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
 
-  if (navClose) {
-    navClose.addEventListener("click", () => {
-      navMenu.classList.remove("show-menu");
-      analytics.logEvent('menu_close');
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 50;
+      const sectionId = section.getAttribute('id');
+
+      const navLink = document.querySelector(`.nav__link[href*="${sectionId}"]`);
+      if (navLink) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLink.classList.add('active');
+        } else {
+          navLink.classList.remove('active');
+        }
+      }
     });
-  }
+  });
+
+
 
   /*==================== SKILLS ACCORDION ====================*/
   const skillsContents = document.querySelectorAll(".skills__content");

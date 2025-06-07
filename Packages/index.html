@@ -26,13 +26,14 @@
 <body>
 <!--==================== HEADER ====================-->
 <header class="header" id="header">
-  <nav class="nav container">
-    <a href="#" id="nav__logo">
-      <img src="images/favicon.ico" alt="Logo" class="nav__logo-img">
-    </a>
-
+  <nav class="nav">
     <div class="nav__menu" id="nav-menu">
-      <ul class="nav__list grid">
+      <ul class="nav__list">
+        <li class="nav__item nav__logo-item">
+          <a href="#home" class="nav__logo-link">
+            <img src="images/favicon.ico" alt="Logo" class="nav__logo-img" />
+          </a>
+        </li>
         <li class="nav__item">
           <a href="#home" class="nav__link">
             <i class="uil uil-estate nav__icon"></i>Home
@@ -48,7 +49,6 @@
             <i class="uil uil-user nav__icon"></i>Projects
           </a>
         </li>
-
         <li class="nav__item">
           <a href="#resume" class="nav__link">
             <i class="uil uil-briefcase-alt nav__icon"></i>Resume
@@ -60,15 +60,10 @@
           </a>
         </li>
       </ul>
-      <i class="uil uil-times nav__close" id="nav-close"></i>
-    </div>
-    <div class="nav__btns">
-      <div class="nav__toggle" id="nav-toggle">
-        <i class="uil uil-apps"></i>
-      </div>
     </div>
   </nav>
 </header>
+
 
 <!--==================== MAIN ====================-->
 <main class="main">
@@ -512,6 +507,24 @@
                 <span class="skills__percentage skills__80"></span>
               </div>
             </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">ALM</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage skills__90"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Visual Basic</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage skills__80"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -670,7 +683,7 @@
     </div>
     <p class="footer__copy">
       &#169; Ciszek, 2024 All rights reserved.
-      <br>v2.2
+      <br>v2.3
     </p>
   </div>
 </footer>
