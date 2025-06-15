@@ -27,42 +27,39 @@
 <!--==================== HEADER ====================-->
 <header class="header" id="header">
   <nav class="nav">
+    <!-- Logo always visible -->
+    <a href="#home" class="nav__logo-link">
+      <img src="images/favicon.ico" alt="Logo" class="nav__logo-img" />
+    </a>
+
+    <!-- Hamburger icon for mobile -->
+    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+      <i class="uil uil-bars"></i>
+    </button>
+
+    <!-- Dropdown menu -->
     <div class="nav__menu" id="nav-menu">
       <ul class="nav__list">
-        <li class="nav__item nav__logo-item">
-          <a href="#home" class="nav__logo-link">
-            <img src="images/favicon.ico" alt="Logo" class="nav__logo-img" />
-          </a>
+        <li class="nav__item">
+          <a href="#home" class="nav__link">Home</a>
         </li>
         <li class="nav__item">
-          <a href="#home" class="nav__link">
-            <i class="uil uil-estate nav__icon"></i>Home
-          </a>
+          <a href="#about" class="nav__link">About</a>
         </li>
         <li class="nav__item">
-          <a href="#about" class="nav__link">
-            <i class="uil uil-user nav__icon"></i>About
-          </a>
+          <a href="#projects" class="nav__link">Projects</a>
         </li>
         <li class="nav__item">
-          <a href="#projects" class="nav__link">
-            <i class="uil uil-user nav__icon"></i>Projects
-          </a>
+          <a href="#resume" class="nav__link">Resume</a>
         </li>
         <li class="nav__item">
-          <a href="#resume" class="nav__link">
-            <i class="uil uil-briefcase-alt nav__icon"></i>Resume
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="#contact" class="nav__link">
-            <i class="uil uil-message nav__icon"></i>Contact
-          </a>
+          <a href="#contact" class="nav__link">Contact</a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+
 
 
 <!--==================== MAIN ====================-->

@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   /*==================== NAVIGATION MENU ====================*/
-  // Scroll-activated nav highlighting
+
+// Highlight active nav link based on scroll position
   const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__link');
 
   window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
@@ -42,6 +44,26 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
           navLink.classList.remove('active');
         }
+      }
+    });
+  });
+
+  /*==================== TOGGLE MOBILE MENU ====================*/
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  }
+
+  /*==================== CLOSE MENU ON LINK CLICK ====================*/
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Only close menu on small screens
+      if (window.innerWidth <= 767) {
+        menu.classList.remove('show');
       }
     });
   });
