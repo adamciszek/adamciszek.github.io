@@ -151,7 +151,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  max-width: 868px;
+  max-width: 650px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
   padding: 0 1rem;
@@ -228,7 +228,7 @@ nav {
 /*================== Responsive ==================*/
 @media screen and (max-width: 767px) {
   nav {
-    width: 40%;      /* ⬅️ narrower than full width */
+    width: 30%;      /* ⬅️ narrower than full width */
     max-width: 380px; /* ⬅️ optional max */
   }
 
@@ -257,11 +257,6 @@ nav {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-  }
-
-  .nav__link {
-    font-size: 1rem;
-    padding: 0.5rem 0;
   }
 }
 
