@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import favicon from '../assets/images/favicon.ico';
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     // Highlight active nav link based on scroll position
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav__link');
-    const menu = document.getElementById('nav-menu');
-    const toggle = document.getElementById('nav-toggle');
 
     const onScroll = () => {
       const scrollY = window.pageYOffset;
@@ -27,24 +27,23 @@ const Header = () => {
     };
     window.addEventListener('scroll', onScroll);
 
-    // Toggle mobile menu
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        menu.classList.toggle('show');
-      });
-    }
     // Close menu on link click (mobile)
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth <= 767) {
-          menu.classList.remove('show');
+          setIsMenuOpen(false);
         }
       });
     });
+
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="header" id="header">
@@ -53,12 +52,14 @@ const Header = () => {
         <a href="#home" className="nav__logo-link">
           <img src={favicon} alt="Logo" className="nav__logo-img" />
         </a>
+        
         {/* Hamburger icon for mobile */}
-        <button className="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+        <button className="nav__toggle" id="nav-toggle" onClick={toggleMenu} aria-label="Toggle menu">
           <i className="uil uil-bars"></i>
         </button>
+        
         {/* Dropdown menu */}
-        <div className="nav__menu" id="nav-menu">
+        <div className={`nav__menu ${isMenuOpen ? 'show' : ''}`} id="nav-menu">
           <ul className="nav__list">
             <li className="nav__item">
               <a href="#home" className="nav__link">Home</a>

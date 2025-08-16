@@ -54,6 +54,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -62,6 +65,10 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 h1,
@@ -87,11 +94,16 @@ a {
 img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
   padding: 4rem 0 4rem;
+  /* Ensure sections don't overflow */
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .section__title {
@@ -112,9 +124,11 @@ img {
 /*==================== LAYOUT ====================*/
 .container {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin: 0;
   padding: 0;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 .grid {
@@ -230,8 +244,10 @@ nav {
 /*================== Responsive ==================*/
 @media screen and (max-width: 767px) {
   nav {
-    width: 30%;      /* ⬅️ narrower than full width */
-    max-width: 380px; /* ⬅️ optional max */
+    width: 40%;      /* Much smaller width on mobile */
+    max-width: 300px; /* Cap the maximum width */
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .nav__toggle {
@@ -243,7 +259,8 @@ nav {
     top: 60px;
     left: 1rem;
     right: 1rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     padding: 1rem;
@@ -262,15 +279,32 @@ nav {
   }
 }
 
-
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  nav {
+    width: 50%; /* Further reduced width for iPhone */
+    max-width: 240px; /* Reduced max width */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 0.5rem;
+  }
+  
+  .nav__link {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+}
 
 /*===================================== MAIN ===============================*/
 .home__container {
-  max-width: 1200px;
+  max-width: 850px; /* Balanced width for home section */
   margin-left: auto;
   margin-right: auto;
   padding-left: 144px; /* Increased from 96px to 144px */
   padding-right: 96px;
+  /* Prevent horizontal scroll */
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .Quote {
@@ -297,6 +331,10 @@ nav {
   padding-top: 3.5rem;
   align-items: center;
   justify-items: stretch;
+  /* Prevent horizontal scroll */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; /* Center the content */
 }
 
 .home__img {
@@ -341,6 +379,7 @@ aside.home__social .home__social-icon i:hover {
   border-radius: 50%;
   width: 40vw;
   border: 4px solid var(--first-color-alt);
+  max-width: 100%;
 }
 
 /* Animation */
@@ -596,6 +635,10 @@ div.about__info-data > span {
     flex-direction: column;
     min-height: auto;
     gap: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .about__images {
@@ -607,6 +650,7 @@ div.about__info-data > span {
     margin-bottom: 2rem;
     order: -1; /* This moves images above the text */
     height: auto;
+    width: 100%;
   }
 
   .about__image-item {
@@ -617,10 +661,16 @@ div.about__info-data > span {
   .about__image {
     width: 160px;
     max-height: 140px;
+    max-width: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .about__container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
   .about__images {
     gap: 1.5rem;
   }
@@ -632,6 +682,11 @@ div.about__info-data > span {
 }
 
 @media screen and (max-width: 480px) {
+  .about__container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  
   .about__images {
     gap: 1rem;
   }
@@ -639,6 +694,28 @@ div.about__info-data > span {
   .about__image {
     width: 120px;
     max-height: 100px;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .about__container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .about__images {
+    gap: 0.75rem;
+  }
+  
+  .about__image {
+    width: 100px;
+    max-height: 80px;
+  }
+  
+  .about__description {
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 }
 /*==================== SKILLS ====================*/
@@ -816,16 +893,71 @@ div.about__info-data > span {
 @media screen and (max-width: 992px) {
   .skills__container {
     grid-template-columns: 1fr; /* Single column layout */
-    max-width: 600px; /* Narrower container */
+    max-width: 100%; /* Full width on mobile */
     gap: 2rem;
+    padding: 0 1rem;
+    width: 100%;
   }
 
   .skills__content {
     margin-bottom: 2rem;
+    width: 100%;
   }
 
   .skills__content:last-child {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills__container {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+  
+  .skills__content {
+    padding: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills__container {
+    padding: 0 0.25rem;
+    gap: 1rem;
+  }
+  
+  .skills__content {
+    padding: 1rem;
+  }
+  
+  .skills__title {
+    font-size: 1.1rem;
+  }
+  
+  .skills__icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .skills__container {
+    padding: 0 0.5rem;
+    gap: 0.75rem; /* Reduced gap for iPhone */
+  }
+  
+  .skills__content {
+    padding: 0.875rem;
+  }
+  
+  .skills__title {
+    font-size: 1rem;
+  }
+  
+  .skills__icon {
+    font-size: 1.6rem;
+    margin-right: 0.75rem;
   }
 }
 
@@ -842,6 +974,8 @@ div.about__info-data > span {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 32px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .qualification__button {
@@ -851,6 +985,79 @@ div.about__info-data > span {
   padding: 10px 15px; /* Add padding for better spacing */
   border-radius: 5px; /* Optional: Add border-radius for rounded corners */
   transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Mobile adjustments for qualification */
+@media screen and (max-width: 768px) {
+  .qualification__tabs {
+    flex-direction: row; /* Keep horizontal */
+    gap: 0.5rem; /* Reduce gap */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .qualification__button {
+    width: auto; /* Auto width instead of full width */
+    max-width: 150px; /* Smaller max width */
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  
+  .qualification__data {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .qualification__rounder {
+    display: none;
+  }
+  
+  .qualification__line {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .qualification__tabs {
+    gap: 0.25rem; /* Even smaller gap */
+  }
+  
+  .qualification__button {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    max-width: 120px; /* Smaller max width */
+  }
+  
+  .qualification__title {
+    font-size: 0.9rem;
+  }
+  
+  .qualification__subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .qualification__tabs {
+    gap: 0.2rem; /* Very small gap */
+  }
+  
+  .qualification__button {
+    font-size: 0.8rem;
+    padding: 8px 16px; /* Increased padding for better fit */
+    max-width: 140px; /* Increased max width to fit text */
+    min-width: 120px; /* Added minimum width */
+  }
+  
+  .qualification__title {
+    font-size: 0.85rem;
+  }
+  
+  .qualification__subtitle {
+    font-size: 0.75rem;
+  }
 }
 
 .qualification__button:hover {
@@ -923,6 +1130,9 @@ div.about__info-data > span {
 /* Projects Section */
 .projects {
   padding: 4rem 0 2rem;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Scroll Container */
@@ -931,6 +1141,78 @@ div.about__info-data > span {
   display: flex;
   gap: 2rem; /* Space between cards */
   max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem; /* Restored original padding */
+}
+
+/* Mobile adjustments for projects */
+@media screen and (max-width: 768px) {
+  .projects__container {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+  
+  .project__card {
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .projects__container {
+    padding: 0 0.25rem;
+    gap: 1rem;
+  }
+  
+  .project__card {
+    width: 260px;
+    min-width: 260px;
+  }
+  
+  .project__title {
+    font-size: 1.1rem;
+    padding: 0.75rem;
+  }
+  
+  .project__description {
+    padding: 0 0.75rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .projects__container {
+    padding: 0 0.25rem; /* Reduced padding for smaller gap to borders */
+    gap: 0.75rem; /* Reduced gap for iPhone */
+  }
+  
+  .project__card {
+    width: 240px;
+    min-width: 240px;
+  }
+  
+  .project__title {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .project__description {
+    padding: 0 0.5rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Projects section spacing */
+.projects.section {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+/* Skills section spacing */
+.skills.section {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 /* Scroll Container for Projects */
@@ -1324,19 +1606,31 @@ div.about__info-data > span {
 
 /* Responsive Layout */
 @media (max-width: 768px) {
+  .contact__container {
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  
   .contact__info-container {
-    flex-direction: column;
+    flex-direction: row; /* Keep horizontal */
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 1rem; /* Reduce gap */
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping if needed */
   }
 
   .contact__card {
-    width: 100%;
-    max-width: 300px;
+    width: auto; /* Auto width instead of full width */
+    max-width: 200px; /* Smaller max width */
+    min-width: 180px; /* Minimum width */
   }
 
   .contact__form-container {
     padding: 1.5rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .contact__button {
@@ -1347,11 +1641,46 @@ div.about__info-data > span {
 
 @media (max-width: 480px) {
   .contact__container {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .contact__form-container {
     padding: 1rem;
+  }
+  
+  .contact__card {
+    padding: 1.25rem;
+    max-width: 160px; /* Even smaller on very small screens */
+    min-width: 140px;
+  }
+}
+
+/* iPhone specific adjustments */
+@media (max-width: 428px) {
+  .contact__container {
+    padding: 0.5rem;
+  }
+  
+  .contact__form-container {
+    padding: 0.875rem;
+  }
+  
+  .contact__card {
+    padding: 1rem;
+    max-width: 160px; /* Increased width to fit text */
+    min-width: 140px; /* Increased minimum width */
+  }
+  
+  .contact__title {
+    font-size: 0.9rem;
+  }
+  
+  .contact__icon {
+    font-size: 1.6rem;
+  }
+  
+  .contact__subtitle {
+    font-size: 0.75rem;
   }
 }
 
@@ -1387,15 +1716,15 @@ div.about__info-data > span {
 .footer__container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center; /* Center all columns vertically */
   row-gap: 3.5rem;
   margin-bottom: 0;
-  max-width: 900px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .footer__col {
@@ -1404,10 +1733,11 @@ div.about__info-data > span {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Center vertically */
+  text-align: center;
 }
 
 .footer__col--left {
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
@@ -1417,7 +1747,7 @@ div.about__info-data > span {
 }
 
 .footer__col--right {
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 1.5rem;
@@ -1454,6 +1784,8 @@ div.about__info-data > span {
     align-items: center;
     padding-left: 48px;
     padding-right: 48px;
+    width: 100%;
+    max-width: 100%;
   }
   .footer__col--left,
   .footer__col--center,
@@ -1469,10 +1801,46 @@ div.about__info-data > span {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .footer__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .footer__container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  
+  .footer__title {
+    font-size: 1.25rem;
+  }
+  
+  .footer__subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .footer__container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  .footer__title {
+    font-size: 1.1rem;
+  }
+  
+  .footer__subtitle {
+    font-size: 0.7rem;
+  }
+  
+  .footer__social {
+    font-size: 1rem;
+    margin-right: 16px;
   }
 }
 
@@ -1622,6 +1990,8 @@ div.footer__container + p {
   .container {
     margin-left: 16px;
     margin-right: 16px;
+    width: calc(100% - 32px);
+    max-width: 100%;
   }
 
   .Quote {
@@ -1645,12 +2015,13 @@ div.footer__container + p {
 
   .home__content {
     grid-template-columns: 0.35fr 3fr;
+    width: 100%;
+    max-width: 100%;
   }
 
   .home__social-icon {
     width: 24px;
   }
-
 
   .home__subtitle {
     font-size: 24px;
@@ -1662,6 +2033,7 @@ div.footer__container + p {
 
   .home__Profile-pic {
     width: 38vw;
+    max-width: 100%;
   }
 
   .home__button {
@@ -1678,6 +2050,7 @@ div.footer__container + p {
 
   .pro-img {
     width: 80vw;
+    max-width: 100%;
   }
 
   .blog__bg {
@@ -1692,6 +2065,8 @@ div.footer__container + p {
 @media screen and (min-width: 568px) {
   .home__content {
     grid-template-columns: max-content 1fr 1fr;
+    width: 100%;
+    max-width: 100%;
   }
 
   .Quote {
@@ -1714,6 +2089,7 @@ div.footer__container + p {
 
   .home__Profile-pic {
     width: 30vw;
+    max-width: 100%;
   }
 
   .about__container,
@@ -2001,15 +2377,69 @@ div.footer__container + p {
   padding-right: 144px;
 }
 
+/* Ensure home container is narrower on larger screens */
+@media screen and (min-width: 769px) {
+  .home__container {
+    max-width: 1250px !important; /* Force balanced width on larger screens */
+  }
+}
+
 @media screen and (max-width: 768px) {
   .home__container {
     padding-left: 48px; /* Responsive: increase left padding a bit */
     padding-right: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .about.section {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
+
 @media screen and (max-width: 480px) {
   .home__container {
     padding-left: 16px;
     padding-right: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .about.section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* iPhone specific adjustments */
+@media screen and (max-width: 428px) {
+  .home__container {
+    padding-left: 12px;
+    padding-right: 8px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .about.section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .home__Profile-pic {
+    width: 35vw;
+    max-width: 100%;
+  }
+  
+  .home__title {
+    font-size: 1.25rem;
+  }
+  
+  .home__subtitle {
+    font-size: 1rem;
+  }
+  
+  .home__description {
+    font-size: 0.875rem;
   }
 }
