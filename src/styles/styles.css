@@ -969,6 +969,70 @@ div.about__info-data > span {
   }
 }
 
+/* Dark mode styles for skills section */
+@media (prefers-color-scheme: dark) {
+  .skills__content {
+    background: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .skills__content:hover {
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  }
+  
+  .skills__title {
+    color: #ffffff;
+  }
+  
+  .skills__name {
+    color: #e0e0e0;
+  }
+  
+  .skills__bar {
+    background-color: #444;
+  }
+  
+  .skills__percentage {
+    background-color: var(--first-color);
+  }
+  
+  .skills__40,
+  .skills__50,
+  .skills__60,
+  .skills__70,
+  .skills__80,
+  .skills__90 {
+    background-color: var(--first-color);
+  }
+  
+  .skills__data:nth-child(even) .skills__percentage {
+    background-color: var(--first-color-alt);
+  }
+  
+  /* Fix for percentage bars visibility in dark mode */
+  .skills__bar {
+    background-color: #555;
+  }
+  
+  .skills__percentage {
+    background-color: #ffffff;
+  }
+  
+  .skills__40,
+  .skills__50,
+  .skills__60,
+  .skills__70,
+  .skills__80,
+  .skills__90 {
+    background-color: #ffffff;
+  }
+  
+  .skills__data:nth-child(even) .skills__percentage {
+    background-color: #e0e0e0;
+  }
+}
+
 /*================================ QUALIFICATION ============================*/
 .qualification__tabs {
   display: flex;
@@ -1125,6 +1189,45 @@ div.about__info-data > span {
 .qualification__button.qualification__active {
   color: var(--first-color);
   background-color: #f0f0f0; /* Ensure background stays active */
+}
+
+/* Dark mode styles for qualification section */
+@media (prefers-color-scheme: dark) {
+  .qualification__button {
+    color: #ffffff;
+    background-color: #3a3a3a;
+  }
+  
+  .qualification__button:hover {
+    background-color: #4a4a4a;
+    color: var(--first-color);
+  }
+  
+  .qualification__button.qualification__active {
+    background-color: #555;
+    color: var(--first-color);
+  }
+  
+  .qualification__title {
+    color: #ffffff;
+  }
+  
+  .qualification__subtitle {
+    color: #e0e0e0;
+  }
+  
+  .qualification__calendar {
+    color: #b0b0b0;
+  }
+  
+  .qualification__rounder {
+    background-color: #ffffff;
+    border: 2px solid var(--first-color);
+  }
+  
+  .qualification__line {
+    background-color: #ffffff;
+  }
 }
 
 /* Projects Section */
@@ -1707,6 +1810,68 @@ div.about__info-data > span {
 
 .contact__button.sent .button-text {
   opacity: 0;
+}
+
+/* Dark mode styles for contact section */
+@media (prefers-color-scheme: dark) {
+  .contact__form-container {
+    background: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .contact__input {
+    color: #ffffff;
+    border-bottom: 1px solid #555;
+  }
+  
+  .contact__input:focus {
+    border-bottom-color: var(--first-color);
+  }
+  
+  .contact__label {
+    color: #b0b0b0;
+  }
+  
+  .contact__input:focus + .contact__label,
+  .contact__input:not(:placeholder-shown) + .contact__label {
+    color: var(--first-color);
+  }
+  
+  .contact__line {
+    background: var(--first-color);
+  }
+  
+  .contact__card {
+    background: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .contact__card:hover {
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  }
+  
+  .contact__title {
+    color: #ffffff;
+  }
+  
+  .contact__subtitle {
+    color: #e0e0e0;
+  }
+  
+  .contact__card-link {
+    color: #ffffff;
+  }
+  
+  .contact__card-link:hover,
+  .contact__card-link:focus,
+  .contact__card-link:active {
+    color: #ffffff;
+  }
+  
+  .email-card:hover {
+    background-color: #3a3a3a;
+  }
 }
 /*==================================== FOOTER ==================================*/
 .footer {
