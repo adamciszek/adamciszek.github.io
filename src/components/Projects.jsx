@@ -13,7 +13,7 @@ const Projects = () => (
     <div className="projects__container container">
       <div className="projects__scroll">
         {/* Project 1 - Blisssfulll Treats */}
-        <div className="project__card" onClick={() => window.open('https://github.com/adamciszek/blisssfulll-treats', '_blank')}>
+        <div className="project__card" onClick={() => window.open('https://blisssfullltreats.ca', '_blank')}>
           <img src={blisssfulllTreatsImg} alt="Blisssfulll Treats Project" className="project__img" />
           <h3 className="project__title">Blisssfulll Treats business website</h3>
           <p className="project__description">Build a functional & reactive reactJS business website for a client to accept orders and display other business information. The gallery is integrated with a database to store images, tags, and metadata.</p>
