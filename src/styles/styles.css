@@ -465,6 +465,25 @@ aside.home__social .home__social-icon i:hover {
   font-size: 1.25rem;
   cursor: pointer;
 }
+/* Ensure title and description stack on small screens */
+@media screen and (max-width: 600px) {
+  .home__data {
+    display: flex;
+    flex-direction: column;
+    align-items: start;   /* keeps them centered */
+    text-align: center;    /* aligns text under title */
+    gap: 0.25rem;          /* small spacing between title & subtitle */
+  }
+
+  .home__title {
+    margin-bottom: 0.25rem;
+  }
+
+  .home__description {
+    margin-top: 0;
+  }
+}
+
 
 /*==================== BUTTONS ====================*/
 .button {
